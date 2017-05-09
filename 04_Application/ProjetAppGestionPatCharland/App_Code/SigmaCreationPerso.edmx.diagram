@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d4f57a984d847f5b00376d2fb91ee8b" Name="Diagram1" ZoomLevel="82" >
+        <EntityTypeShape EntityType="SigmaCreationPerso.Joueur" Width="1.5" PointX="6.125" PointY="1.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.Personnage" Width="1.5" PointX="9.25" PointY="1.625" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.Attribut" Width="1.5" PointX="6.125" PointY="3.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.EquipementEmporte" Width="1.5" PointX="6.125" PointY="7.25" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.SpecialitesSecondaire" Width="1.5" PointX="6.125" PointY="9.875" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.UnitesSpeciale" Width="1.5" PointX="12.625" PointY="1.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.UnitesSpecialesLangage" Width="1.5" PointX="15.375" PointY="1.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.Langage" Width="1.5" PointX="19" PointY="1.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.ArmesEmportee" Width="1.5" PointX="11.75" PointY="4.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.Arme" Width="1.5" PointX="15.125" PointY="4.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.ArmesMotsCle" Width="1.5" PointX="18.125" PointY="4.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.MotsCle" Width="1.5" PointX="21.25" PointY="4.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.ArmesType" Width="1.5" PointX="18.375" PointY="6.875" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.ClassesSoldat" Width="1.5" PointX="11.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.ClassesArmesType" Width="1.5" PointX="15.375" PointY="8.25" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.SpecialitesPrimaire" Width="1.5" PointX="13.5" PointY="10.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.ManoeuvresTactique" Width="1.5" PointX="16.625" PointY="12.5" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.BonusAttribut" Width="1.5" PointX="19.625" PointY="10.5" />
+        <AssociationConnector Association="SigmaCreationPerso.EquipementEmportePersonnage" />
+        <AssociationConnector Association="SigmaCreationPerso.SpecialitesSecondairePersonnage" />
+        <AssociationConnector Association="SigmaCreationPerso.PersonnageUnitesSpeciale" />
+        <AssociationConnector Association="SigmaCreationPerso.UnitesSpecialeUnitesSpecialesLangage" />
+        <AssociationConnector Association="SigmaCreationPerso.LangageUnitesSpecialesLangage" />
+        <AssociationConnector Association="SigmaCreationPerso.PersonnageArmesEmportee" />
+        <AssociationConnector Association="SigmaCreationPerso.ArmeArmesEmportee" />
+        <AssociationConnector Association="SigmaCreationPerso.UnitesSpecialeArme" />
+        <AssociationConnector Association="SigmaCreationPerso.ArmeArmesMotsCle" />
+        <AssociationConnector Association="SigmaCreationPerso.ArmesTypeArme" />
+        <AssociationConnector Association="SigmaCreationPerso.MotsCleArmesMotsCle" />
+        <AssociationConnector Association="SigmaCreationPerso.ClassesSoldatPersonnage" />
+        <AssociationConnector Association="SigmaCreationPerso.ClassesSoldatClassesArmesType" />
+        <AssociationConnector Association="SigmaCreationPerso.ArmesTypeClassesArmesType" />
+        <AssociationConnector Association="SigmaCreationPerso.SpecialitesPrimairePersonnage" />
+        <AssociationConnector Association="SigmaCreationPerso.ManoeuvresTactiqueSpecialitesPrimaire" />
+        <AssociationConnector Association="SigmaCreationPerso.JoueurPersonnage" />
+        <AssociationConnector Association="SigmaCreationPerso.AttributPersonnage" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.Equipement" Width="1.5" PointX="3.25" PointY="7.25" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.EquipementSpecialite" Width="1.5" PointX="3.125" PointY="10.875" />
+        <AssociationConnector Association="SigmaCreationPerso.FK_EquipementEmporteEquipement" />
+        <AssociationConnector Association="SigmaCreationPerso.FK_EquipementSpecialiteEquipement" />
+        <AssociationConnector Association="SigmaCreationPerso.FK_SpecialitesSecondaireEquipementSpecialite" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.Armure" Width="1.5" PointX="0.5" PointY="7.25" />
+        <AssociationConnector Association="SigmaCreationPerso.FK_Armures_Equipementse" />
+        <EntityTypeShape EntityType="SigmaCreationPerso.SpecialitesPrimairesBonu" Width="1.5" PointX="16.625" PointY="10.375" />
+        <AssociationConnector Association="SigmaCreationPerso.FK_BonusAttributSpecialitesPrimairesBonus" />
+        <AssociationConnector Association="SigmaCreationPerso.FK_SpecialitesPrimaireSpecialitesPrimairesBonus" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

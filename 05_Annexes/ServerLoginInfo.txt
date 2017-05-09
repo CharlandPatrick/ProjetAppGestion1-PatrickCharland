@@ -1,0 +1,4 @@
+host: db.mechapaf.com
+username: charland
+database: charland
+password: P@7rick

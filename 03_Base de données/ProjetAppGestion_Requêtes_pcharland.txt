@@ -1,0 +1,26 @@
+#1 Liste des joueurs:	
+
+SELECT * FROM Joueurs;
+
+
+#2 Liste des personnages d'un joueur X triés par nom du personnage:	
+
+SELECT * FROM Personnages WHERE Joueur_Id=X ORDER BY nom
+
+
+#3 Liste des personnages de classe X et de spécialité Y:
+
+SELECT * FROM Personnages WHERE ClassesSoldat_Id=X AND SpecialitesPrimaire_Id=Y
+
+
+#4 Nombre de personnages par joueur:	
+
+SELECT COUNT(prenom) FROM Personnages GROUP BY Joueur_Id
+
+
+#5 Liste des attributs avec force physique majoré de 10%:
+
+SELECT formePhysique + (formePhysique * 0.1) from Attributs
+
+
+

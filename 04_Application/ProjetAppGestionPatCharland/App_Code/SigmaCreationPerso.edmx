@@ -1,0 +1,1482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SigmaCreationPerso.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Armes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="distanceCourte" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="distanceLongue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dommage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="teteAtteinte" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UnitesSpeciale_Id" Type="int" Nullable="false" />
+          <Property Name="ArmesType_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArmesEmportees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Personnage_Id" Type="int" Nullable="false" />
+          <Property Name="Arme_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArmesMotsCles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Arme_Id" Type="int" Nullable="false" />
+          <Property Name="MotsCle_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArmesTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Armures">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="modele" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="bonus" Type="int" Nullable="false" />
+          <Property Name="absortion" Type="int" Nullable="false" />
+          <Property Name="vitesse" Type="int" Nullable="false" />
+          <Property Name="EquipementsID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attributs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="combat" Type="int" Nullable="false" />
+          <Property Name="tir" Type="int" Nullable="false" />
+          <Property Name="eveil" Type="int" Nullable="false" />
+          <Property Name="furtivite" Type="int" Nullable="false" />
+          <Property Name="resistence" Type="int" Nullable="false" />
+          <Property Name="leadership" Type="int" Nullable="false" />
+          <Property Name="formePhysique" Type="int" Nullable="false" />
+          <Property Name="capaciteTechnique" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BonusAttributs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bonusAttribut" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="valeur" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassesArmesTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassesSoldat_Id" Type="int" Nullable="false" />
+          <Property Name="ArmesType_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassesSoldats">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="16" Nullable="false" />
+          <Property Name="bonus" Type="nchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipementEmportes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="entraine" Type="bit" Nullable="false" />
+          <Property Name="Personnage_Id" Type="int" Nullable="false" />
+          <Property Name="Equipement_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="nonEntraine" Type="nchar" MaxLength="128" Nullable="false" />
+          <Property Name="entraine" Type="nchar" MaxLength="128" Nullable="false" />
+          <Property Name="Armures_Id" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="EquipementSpecialites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecialitesSecondaire_Id" Type="int" Nullable="false" />
+          <Property Name="Equipements_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Joueurs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prenom" Type="nchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Langages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManoeuvresTactiques">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MotsCles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="16" Nullable="false" />
+          <Property Name="effet" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personnages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prenom" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="nomDeCode" Type="nchar" MaxLength="16" Nullable="false" />
+          <Property Name="niveau" Type="int" Nullable="false" />
+          <Property Name="descriptionPhsique" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="biographie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SpecialitesSecondaire_Id" Type="int" Nullable="false" />
+          <Property Name="UnitesSpeciales_Id" Type="int" Nullable="false" />
+          <Property Name="ClassesSoldat_Id" Type="int" Nullable="false" />
+          <Property Name="SpecialitesPrimaire_Id" Type="int" Nullable="false" />
+          <Property Name="Joueur_Id" Type="int" Nullable="false" />
+          <Property Name="Attribut_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecialitesPrimaires">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="ManoeuvresTactique_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecialitesPrimairesBonus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecialitesPrimaire_Id" Type="int" Nullable="false" />
+          <Property Name="BonusAttribut_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecialitesSecondaires">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitesSpeciales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitesSpecialesLangages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitesSpeciale_Id" Type="int" Nullable="false" />
+          <Property Name="Langage_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ArmeArmesEmportee">
+          <End Role="Armes" Type="Self.Armes" Multiplicity="1" />
+          <End Role="ArmesEmportees" Type="Self.ArmesEmportees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArmesEmportees">
+              <PropertyRef Name="Arme_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArmeArmesMotsCle">
+          <End Role="Armes" Type="Self.Armes" Multiplicity="1" />
+          <End Role="ArmesMotsCles" Type="Self.ArmesMotsCles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArmesMotsCles">
+              <PropertyRef Name="Arme_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArmesTypeArme">
+          <End Role="ArmesTypes" Type="Self.ArmesTypes" Multiplicity="1" />
+          <End Role="Armes" Type="Self.Armes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArmesTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Armes">
+              <PropertyRef Name="ArmesType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArmesTypeClassesArmesType">
+          <End Role="ArmesTypes" Type="Self.ArmesTypes" Multiplicity="1" />
+          <End Role="ClassesArmesTypes" Type="Self.ClassesArmesTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArmesTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassesArmesTypes">
+              <PropertyRef Name="ArmesType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Armures_Equipementse">
+          <End Role="Equipements" Type="Self.Equipements" Multiplicity="1" />
+          <End Role="Armures" Type="Self.Armures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Armures">
+              <PropertyRef Name="EquipementsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AttributPersonnage">
+          <End Role="Attributs" Type="Self.Attributs" Multiplicity="1" />
+          <End Role="Personnages" Type="Self.Personnages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attributs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personnages">
+              <PropertyRef Name="Attribut_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BonusAttributSpecialitesPrimairesBonus">
+          <End Role="BonusAttributs" Type="Self.BonusAttributs" Multiplicity="1" />
+          <End Role="SpecialitesPrimairesBonus" Type="Self.SpecialitesPrimairesBonus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BonusAttributs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecialitesPrimairesBonus">
+              <PropertyRef Name="BonusAttribut_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassesSoldatClassesArmesType">
+          <End Role="ClassesSoldats" Type="Self.ClassesSoldats" Multiplicity="1" />
+          <End Role="ClassesArmesTypes" Type="Self.ClassesArmesTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassesSoldats">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassesArmesTypes">
+              <PropertyRef Name="ClassesSoldat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassesSoldatPersonnage">
+          <End Role="ClassesSoldats" Type="Self.ClassesSoldats" Multiplicity="1" />
+          <End Role="Personnages" Type="Self.Personnages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassesSoldats">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personnages">
+              <PropertyRef Name="ClassesSoldat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipementEmporteEquipement">
+          <End Role="Equipements" Type="Self.Equipements" Multiplicity="1" />
+          <End Role="EquipementEmportes" Type="Self.EquipementEmportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipementEmportes">
+              <PropertyRef Name="Equipement_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipementEmportePersonnage">
+          <End Role="Personnages" Type="Self.Personnages" Multiplicity="1" />
+          <End Role="EquipementEmportes" Type="Self.EquipementEmportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipementEmportes">
+              <PropertyRef Name="Personnage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipementSpecialiteEquipement">
+          <End Role="Equipements" Type="Self.Equipements" Multiplicity="1" />
+          <End Role="EquipementSpecialites" Type="Self.EquipementSpecialites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipementSpecialites">
+              <PropertyRef Name="Equipements_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JoueurPersonnage">
+          <End Role="Joueurs" Type="Self.Joueurs" Multiplicity="1" />
+          <End Role="Personnages" Type="Self.Personnages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Joueurs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personnages">
+              <PropertyRef Name="Joueur_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LangageUnitesSpecialesLangage">
+          <End Role="Langages" Type="Self.Langages" Multiplicity="1" />
+          <End Role="UnitesSpecialesLangages" Type="Self.UnitesSpecialesLangages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UnitesSpecialesLangages">
+              <PropertyRef Name="Langage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManoeuvresTactiqueSpecialitesPrimaire">
+          <End Role="ManoeuvresTactiques" Type="Self.ManoeuvresTactiques" Multiplicity="1" />
+          <End Role="SpecialitesPrimaires" Type="Self.SpecialitesPrimaires" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManoeuvresTactiques">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecialitesPrimaires">
+              <PropertyRef Name="ManoeuvresTactique_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MotsCleArmesMotsCle">
+          <End Role="MotsCles" Type="Self.MotsCles" Multiplicity="1" />
+          <End Role="ArmesMotsCles" Type="Self.ArmesMotsCles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotsCles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArmesMotsCles">
+              <PropertyRef Name="MotsCle_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonnageArmesEmportee">
+          <End Role="Personnages" Type="Self.Personnages" Multiplicity="1" />
+          <End Role="ArmesEmportees" Type="Self.ArmesEmportees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArmesEmportees">
+              <PropertyRef Name="Personnage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonnageUnitesSpeciale">
+          <End Role="UnitesSpeciales" Type="Self.UnitesSpeciales" Multiplicity="1" />
+          <End Role="Personnages" Type="Self.Personnages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitesSpeciales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personnages">
+              <PropertyRef Name="UnitesSpeciales_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialitesPrimairePersonnage">
+          <End Role="SpecialitesPrimaires" Type="Self.SpecialitesPrimaires" Multiplicity="1" />
+          <End Role="Personnages" Type="Self.Personnages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialitesPrimaires">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personnages">
+              <PropertyRef Name="SpecialitesPrimaire_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialitesPrimaireSpecialitesPrimairesBonus">
+          <End Role="SpecialitesPrimaires" Type="Self.SpecialitesPrimaires" Multiplicity="1" />
+          <End Role="SpecialitesPrimairesBonus" Type="Self.SpecialitesPrimairesBonus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialitesPrimaires">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecialitesPrimairesBonus">
+              <PropertyRef Name="SpecialitesPrimaire_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialitesSecondaireEquipementSpecialite">
+          <End Role="SpecialitesSecondaires" Type="Self.SpecialitesSecondaires" Multiplicity="1" />
+          <End Role="EquipementSpecialites" Type="Self.EquipementSpecialites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialitesSecondaires">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipementSpecialites">
+              <PropertyRef Name="SpecialitesSecondaire_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialitesSecondairePersonnage">
+          <End Role="SpecialitesSecondaires" Type="Self.SpecialitesSecondaires" Multiplicity="1" />
+          <End Role="Personnages" Type="Self.Personnages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialitesSecondaires">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personnages">
+              <PropertyRef Name="SpecialitesSecondaire_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitesSpecialeArme">
+          <End Role="UnitesSpeciales" Type="Self.UnitesSpeciales" Multiplicity="1" />
+          <End Role="Armes" Type="Self.Armes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitesSpeciales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Armes">
+              <PropertyRef Name="UnitesSpeciale_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitesSpecialeUnitesSpecialesLangage">
+          <End Role="UnitesSpeciales" Type="Self.UnitesSpeciales" Multiplicity="1" />
+          <End Role="UnitesSpecialesLangages" Type="Self.UnitesSpecialesLangages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitesSpeciales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UnitesSpecialesLangages">
+              <PropertyRef Name="UnitesSpeciale_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SigmaCreationPersoStoreContainer">
+          <EntitySet Name="Armes" EntityType="Self.Armes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArmesEmportees" EntityType="Self.ArmesEmportees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArmesMotsCles" EntityType="Self.ArmesMotsCles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArmesTypes" EntityType="Self.ArmesTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Armures" EntityType="Self.Armures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attributs" EntityType="Self.Attributs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BonusAttributs" EntityType="Self.BonusAttributs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassesArmesTypes" EntityType="Self.ClassesArmesTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassesSoldats" EntityType="Self.ClassesSoldats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipementEmportes" EntityType="Self.EquipementEmportes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipements" EntityType="Self.Equipements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipementSpecialites" EntityType="Self.EquipementSpecialites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Joueurs" EntityType="Self.Joueurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Langages" EntityType="Self.Langages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManoeuvresTactiques" EntityType="Self.ManoeuvresTactiques" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MotsCles" EntityType="Self.MotsCles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personnages" EntityType="Self.Personnages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecialitesPrimaires" EntityType="Self.SpecialitesPrimaires" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecialitesPrimairesBonus" EntityType="Self.SpecialitesPrimairesBonus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecialitesSecondaires" EntityType="Self.SpecialitesSecondaires" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitesSpeciales" EntityType="Self.UnitesSpeciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitesSpecialesLangages" EntityType="Self.UnitesSpecialesLangages" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ArmeArmesEmportee" Association="Self.FK_ArmeArmesEmportee">
+            <End Role="Armes" EntitySet="Armes" />
+            <End Role="ArmesEmportees" EntitySet="ArmesEmportees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArmeArmesMotsCle" Association="Self.FK_ArmeArmesMotsCle">
+            <End Role="Armes" EntitySet="Armes" />
+            <End Role="ArmesMotsCles" EntitySet="ArmesMotsCles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArmesTypeArme" Association="Self.FK_ArmesTypeArme">
+            <End Role="ArmesTypes" EntitySet="ArmesTypes" />
+            <End Role="Armes" EntitySet="Armes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArmesTypeClassesArmesType" Association="Self.FK_ArmesTypeClassesArmesType">
+            <End Role="ArmesTypes" EntitySet="ArmesTypes" />
+            <End Role="ClassesArmesTypes" EntitySet="ClassesArmesTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Armures_Equipementse" Association="Self.FK_Armures_Equipementse">
+            <End Role="Equipements" EntitySet="Equipements" />
+            <End Role="Armures" EntitySet="Armures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttributPersonnage" Association="Self.FK_AttributPersonnage">
+            <End Role="Attributs" EntitySet="Attributs" />
+            <End Role="Personnages" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BonusAttributSpecialitesPrimairesBonus" Association="Self.FK_BonusAttributSpecialitesPrimairesBonus">
+            <End Role="BonusAttributs" EntitySet="BonusAttributs" />
+            <End Role="SpecialitesPrimairesBonus" EntitySet="SpecialitesPrimairesBonus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassesSoldatClassesArmesType" Association="Self.FK_ClassesSoldatClassesArmesType">
+            <End Role="ClassesSoldats" EntitySet="ClassesSoldats" />
+            <End Role="ClassesArmesTypes" EntitySet="ClassesArmesTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassesSoldatPersonnage" Association="Self.FK_ClassesSoldatPersonnage">
+            <End Role="ClassesSoldats" EntitySet="ClassesSoldats" />
+            <End Role="Personnages" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipementEmporteEquipement" Association="Self.FK_EquipementEmporteEquipement">
+            <End Role="Equipements" EntitySet="Equipements" />
+            <End Role="EquipementEmportes" EntitySet="EquipementEmportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipementEmportePersonnage" Association="Self.FK_EquipementEmportePersonnage">
+            <End Role="Personnages" EntitySet="Personnages" />
+            <End Role="EquipementEmportes" EntitySet="EquipementEmportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipementSpecialiteEquipement" Association="Self.FK_EquipementSpecialiteEquipement">
+            <End Role="Equipements" EntitySet="Equipements" />
+            <End Role="EquipementSpecialites" EntitySet="EquipementSpecialites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JoueurPersonnage" Association="Self.FK_JoueurPersonnage">
+            <End Role="Joueurs" EntitySet="Joueurs" />
+            <End Role="Personnages" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LangageUnitesSpecialesLangage" Association="Self.FK_LangageUnitesSpecialesLangage">
+            <End Role="Langages" EntitySet="Langages" />
+            <End Role="UnitesSpecialesLangages" EntitySet="UnitesSpecialesLangages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManoeuvresTactiqueSpecialitesPrimaire" Association="Self.FK_ManoeuvresTactiqueSpecialitesPrimaire">
+            <End Role="ManoeuvresTactiques" EntitySet="ManoeuvresTactiques" />
+            <End Role="SpecialitesPrimaires" EntitySet="SpecialitesPrimaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MotsCleArmesMotsCle" Association="Self.FK_MotsCleArmesMotsCle">
+            <End Role="MotsCles" EntitySet="MotsCles" />
+            <End Role="ArmesMotsCles" EntitySet="ArmesMotsCles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonnageArmesEmportee" Association="Self.FK_PersonnageArmesEmportee">
+            <End Role="Personnages" EntitySet="Personnages" />
+            <End Role="ArmesEmportees" EntitySet="ArmesEmportees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonnageUnitesSpeciale" Association="Self.FK_PersonnageUnitesSpeciale">
+            <End Role="UnitesSpeciales" EntitySet="UnitesSpeciales" />
+            <End Role="Personnages" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialitesPrimairePersonnage" Association="Self.FK_SpecialitesPrimairePersonnage">
+            <End Role="SpecialitesPrimaires" EntitySet="SpecialitesPrimaires" />
+            <End Role="Personnages" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialitesPrimaireSpecialitesPrimairesBonus" Association="Self.FK_SpecialitesPrimaireSpecialitesPrimairesBonus">
+            <End Role="SpecialitesPrimaires" EntitySet="SpecialitesPrimaires" />
+            <End Role="SpecialitesPrimairesBonus" EntitySet="SpecialitesPrimairesBonus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialitesSecondaireEquipementSpecialite" Association="Self.FK_SpecialitesSecondaireEquipementSpecialite">
+            <End Role="SpecialitesSecondaires" EntitySet="SpecialitesSecondaires" />
+            <End Role="EquipementSpecialites" EntitySet="EquipementSpecialites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialitesSecondairePersonnage" Association="Self.FK_SpecialitesSecondairePersonnage">
+            <End Role="SpecialitesSecondaires" EntitySet="SpecialitesSecondaires" />
+            <End Role="Personnages" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitesSpecialeArme" Association="Self.FK_UnitesSpecialeArme">
+            <End Role="UnitesSpeciales" EntitySet="UnitesSpeciales" />
+            <End Role="Armes" EntitySet="Armes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitesSpecialeUnitesSpecialesLangage" Association="Self.FK_UnitesSpecialeUnitesSpecialesLangage">
+            <End Role="UnitesSpeciales" EntitySet="UnitesSpeciales" />
+            <End Role="UnitesSpecialesLangages" EntitySet="UnitesSpecialesLangages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SigmaCreationPerso" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="SigmaCreationPersoContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Joueurs" EntityType="SigmaCreationPerso.Joueur" />
+          <EntitySet Name="Personnages" EntityType="SigmaCreationPerso.Personnage" />
+          <EntitySet Name="Attributs" EntityType="SigmaCreationPerso.Attribut" />
+          <EntitySet Name="EquipementEmportes" EntityType="SigmaCreationPerso.EquipementEmporte" />
+          <EntitySet Name="SpecialitesSecondaires" EntityType="SigmaCreationPerso.SpecialitesSecondaire" />
+          <EntitySet Name="UnitesSpeciales" EntityType="SigmaCreationPerso.UnitesSpeciale" />
+          <EntitySet Name="UnitesSpecialesLangages" EntityType="SigmaCreationPerso.UnitesSpecialesLangage" />
+          <EntitySet Name="Langages" EntityType="SigmaCreationPerso.Langage" />
+          <EntitySet Name="ArmesEmportees" EntityType="SigmaCreationPerso.ArmesEmportee" />
+          <EntitySet Name="Armes" EntityType="SigmaCreationPerso.Arme" />
+          <EntitySet Name="ArmesMotsCles" EntityType="SigmaCreationPerso.ArmesMotsCle" />
+          <EntitySet Name="MotsCles" EntityType="SigmaCreationPerso.MotsCle" />
+          <EntitySet Name="ArmesTypes" EntityType="SigmaCreationPerso.ArmesType" />
+          <EntitySet Name="ClassesSoldats" EntityType="SigmaCreationPerso.ClassesSoldat" />
+          <EntitySet Name="ClassesArmesTypes" EntityType="SigmaCreationPerso.ClassesArmesType" />
+          <EntitySet Name="SpecialitesPrimaires" EntityType="SigmaCreationPerso.SpecialitesPrimaire" />
+          <EntitySet Name="ManoeuvresTactiques" EntityType="SigmaCreationPerso.ManoeuvresTactique" />
+          <EntitySet Name="BonusAttributs" EntityType="SigmaCreationPerso.BonusAttribut" />
+          <AssociationSet Name="EquipementEmportePersonnage" Association="SigmaCreationPerso.EquipementEmportePersonnage">
+            <End Role="EquipementEmporte" EntitySet="EquipementEmportes" />
+            <End Role="Personnage" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="SpecialitesSecondairePersonnage" Association="SigmaCreationPerso.SpecialitesSecondairePersonnage">
+            <End Role="SpecialitesSecondaire" EntitySet="SpecialitesSecondaires" />
+            <End Role="Personnage" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="PersonnageUnitesSpeciale" Association="SigmaCreationPerso.PersonnageUnitesSpeciale">
+            <End Role="Personnage" EntitySet="Personnages" />
+            <End Role="UnitesSpeciale" EntitySet="UnitesSpeciales" />
+          </AssociationSet>
+          <AssociationSet Name="UnitesSpecialeUnitesSpecialesLangage" Association="SigmaCreationPerso.UnitesSpecialeUnitesSpecialesLangage">
+            <End Role="UnitesSpeciale" EntitySet="UnitesSpeciales" />
+            <End Role="UnitesSpecialesLangage" EntitySet="UnitesSpecialesLangages" />
+          </AssociationSet>
+          <AssociationSet Name="LangageUnitesSpecialesLangage" Association="SigmaCreationPerso.LangageUnitesSpecialesLangage">
+            <End Role="Langage" EntitySet="Langages" />
+            <End Role="UnitesSpecialesLangage" EntitySet="UnitesSpecialesLangages" />
+          </AssociationSet>
+          <AssociationSet Name="PersonnageArmesEmportee" Association="SigmaCreationPerso.PersonnageArmesEmportee">
+            <End Role="Personnage" EntitySet="Personnages" />
+            <End Role="ArmesEmportee" EntitySet="ArmesEmportees" />
+          </AssociationSet>
+          <AssociationSet Name="ArmeArmesEmportee" Association="SigmaCreationPerso.ArmeArmesEmportee">
+            <End Role="Arme" EntitySet="Armes" />
+            <End Role="ArmesEmportee" EntitySet="ArmesEmportees" />
+          </AssociationSet>
+          <AssociationSet Name="UnitesSpecialeArme" Association="SigmaCreationPerso.UnitesSpecialeArme">
+            <End Role="UnitesSpeciale" EntitySet="UnitesSpeciales" />
+            <End Role="Arme" EntitySet="Armes" />
+          </AssociationSet>
+          <AssociationSet Name="ArmeArmesMotsCle" Association="SigmaCreationPerso.ArmeArmesMotsCle">
+            <End Role="Arme" EntitySet="Armes" />
+            <End Role="ArmesMotsCle" EntitySet="ArmesMotsCles" />
+          </AssociationSet>
+          <AssociationSet Name="ArmesTypeArme" Association="SigmaCreationPerso.ArmesTypeArme">
+            <End Role="ArmesType" EntitySet="ArmesTypes" />
+            <End Role="Arme" EntitySet="Armes" />
+          </AssociationSet>
+          <AssociationSet Name="MotsCleArmesMotsCle" Association="SigmaCreationPerso.MotsCleArmesMotsCle">
+            <End Role="MotsCle" EntitySet="MotsCles" />
+            <End Role="ArmesMotsCle" EntitySet="ArmesMotsCles" />
+          </AssociationSet>
+          <AssociationSet Name="ClassesSoldatPersonnage" Association="SigmaCreationPerso.ClassesSoldatPersonnage">
+            <End Role="ClassesSoldat" EntitySet="ClassesSoldats" />
+            <End Role="Personnage" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="ClassesSoldatClassesArmesType" Association="SigmaCreationPerso.ClassesSoldatClassesArmesType">
+            <End Role="ClassesSoldat" EntitySet="ClassesSoldats" />
+            <End Role="ClassesArmesType" EntitySet="ClassesArmesTypes" />
+          </AssociationSet>
+          <AssociationSet Name="ArmesTypeClassesArmesType" Association="SigmaCreationPerso.ArmesTypeClassesArmesType">
+            <End Role="ArmesType" EntitySet="ArmesTypes" />
+            <End Role="ClassesArmesType" EntitySet="ClassesArmesTypes" />
+          </AssociationSet>
+          <AssociationSet Name="SpecialitesPrimairePersonnage" Association="SigmaCreationPerso.SpecialitesPrimairePersonnage">
+            <End Role="SpecialitesPrimaire" EntitySet="SpecialitesPrimaires" />
+            <End Role="Personnage" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="ManoeuvresTactiqueSpecialitesPrimaire" Association="SigmaCreationPerso.ManoeuvresTactiqueSpecialitesPrimaire">
+            <End Role="ManoeuvresTactique" EntitySet="ManoeuvresTactiques" />
+            <End Role="SpecialitesPrimaire" EntitySet="SpecialitesPrimaires" />
+          </AssociationSet>
+          <AssociationSet Name="JoueurPersonnage" Association="SigmaCreationPerso.JoueurPersonnage">
+            <End Role="Joueur" EntitySet="Joueurs" />
+            <End Role="Personnage" EntitySet="Personnages" />
+          </AssociationSet>
+          <AssociationSet Name="AttributPersonnage" Association="SigmaCreationPerso.AttributPersonnage">
+            <End Role="Attribut" EntitySet="Attributs" />
+            <End Role="Personnage" EntitySet="Personnages" />
+          </AssociationSet>
+          <EntitySet Name="Equipements" EntityType="SigmaCreationPerso.Equipement" />
+          <EntitySet Name="EquipementSpecialites" EntityType="SigmaCreationPerso.EquipementSpecialite" />
+          <AssociationSet Name="FK_EquipementEmporteEquipement" Association="SigmaCreationPerso.FK_EquipementEmporteEquipement">
+            <End Role="Equipement" EntitySet="Equipements" />
+            <End Role="EquipementEmporte" EntitySet="EquipementEmportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipementSpecialiteEquipement" Association="SigmaCreationPerso.FK_EquipementSpecialiteEquipement">
+            <End Role="Equipement" EntitySet="Equipements" />
+            <End Role="EquipementSpecialite" EntitySet="EquipementSpecialites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialitesSecondaireEquipementSpecialite" Association="SigmaCreationPerso.FK_SpecialitesSecondaireEquipementSpecialite">
+            <End Role="SpecialitesSecondaire" EntitySet="SpecialitesSecondaires" />
+            <End Role="EquipementSpecialite" EntitySet="EquipementSpecialites" />
+          </AssociationSet>
+          <EntitySet Name="Armures" EntityType="SigmaCreationPerso.Armure" />
+          <AssociationSet Name="FK_Armures_Equipementse" Association="SigmaCreationPerso.FK_Armures_Equipementse">
+            <End Role="Equipement" EntitySet="Equipements" />
+            <End Role="Armure" EntitySet="Armures" />
+          </AssociationSet>
+          <EntitySet Name="SpecialitesPrimairesBonus" EntityType="SigmaCreationPerso.SpecialitesPrimairesBonu" />
+          <AssociationSet Name="FK_BonusAttributSpecialitesPrimairesBonus" Association="SigmaCreationPerso.FK_BonusAttributSpecialitesPrimairesBonus">
+            <End Role="BonusAttribut" EntitySet="BonusAttributs" />
+            <End Role="SpecialitesPrimairesBonu" EntitySet="SpecialitesPrimairesBonus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialitesPrimaireSpecialitesPrimairesBonus" Association="SigmaCreationPerso.FK_SpecialitesPrimaireSpecialitesPrimairesBonus">
+            <End Role="SpecialitesPrimaire" EntitySet="SpecialitesPrimaires" />
+            <End Role="SpecialitesPrimairesBonu" EntitySet="SpecialitesPrimairesBonus" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Joueur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prenom" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <NavigationProperty Name="Personnages" Relationship="SigmaCreationPerso.JoueurPersonnage" FromRole="Joueur" ToRole="Personnage" />
+        </EntityType>
+        <EntityType Name="Personnage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prenom" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <Property Name="nomDeCode" Type="String" Nullable="false" FixedLength="true" MaxLength="16" Unicode="true" />
+          <Property Name="niveau" Type="Int32" Nullable="false" />
+          <Property Name="descriptionPhsique" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="biographie" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="EquipementEmportes" Relationship="SigmaCreationPerso.EquipementEmportePersonnage" FromRole="Personnage" ToRole="EquipementEmporte" />
+          <NavigationProperty Name="SpecialitesSecondaire" Relationship="SigmaCreationPerso.SpecialitesSecondairePersonnage" FromRole="Personnage" ToRole="SpecialitesSecondaire" />
+          <NavigationProperty Name="UnitesSpeciales" Relationship="SigmaCreationPerso.PersonnageUnitesSpeciale" FromRole="Personnage" ToRole="UnitesSpeciale" />
+          <NavigationProperty Name="ArmesEmportees" Relationship="SigmaCreationPerso.PersonnageArmesEmportee" FromRole="Personnage" ToRole="ArmesEmportee" />
+          <NavigationProperty Name="ClassesSoldat" Relationship="SigmaCreationPerso.ClassesSoldatPersonnage" FromRole="Personnage" ToRole="ClassesSoldat" />
+          <NavigationProperty Name="SpecialitesPrimaire" Relationship="SigmaCreationPerso.SpecialitesPrimairePersonnage" FromRole="Personnage" ToRole="SpecialitesPrimaire" />
+          <NavigationProperty Name="Joueur" Relationship="SigmaCreationPerso.JoueurPersonnage" FromRole="Personnage" ToRole="Joueur" />
+          <NavigationProperty Name="Attribut" Relationship="SigmaCreationPerso.AttributPersonnage" FromRole="Personnage" ToRole="Attribut" />
+        </EntityType>
+        <EntityType Name="Attribut">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <Property Name="combat" Type="Int32" Nullable="false" />
+          <Property Name="tir" Type="Int32" Nullable="false" />
+          <Property Name="eveil" Type="Int32" Nullable="false" />
+          <Property Name="furtivite" Type="Int32" Nullable="false" />
+          <Property Name="resistence" Type="Int32" Nullable="false" />
+          <Property Name="leadership" Type="Int32" Nullable="false" />
+          <Property Name="formePhysique" Type="Int32" Nullable="false" />
+          <Property Name="capaciteTechnique" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personnages" Relationship="SigmaCreationPerso.AttributPersonnage" FromRole="Attribut" ToRole="Personnage" />
+        </EntityType>
+        <EntityType Name="EquipementEmporte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <Property Name="entraine" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Personnage" Relationship="SigmaCreationPerso.EquipementEmportePersonnage" FromRole="EquipementEmporte" ToRole="Personnage" />
+          <NavigationProperty Name="Equipement" Relationship="SigmaCreationPerso.FK_EquipementEmporteEquipement" FromRole="EquipementEmporte" ToRole="Equipement" />
+        </EntityType>
+        <EntityType Name="SpecialitesSecondaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <NavigationProperty Name="Personnages" Relationship="SigmaCreationPerso.SpecialitesSecondairePersonnage" FromRole="SpecialitesSecondaire" ToRole="Personnage" />
+          <NavigationProperty Name="EquipementSpecialites" Relationship="SigmaCreationPerso.FK_SpecialitesSecondaireEquipementSpecialite" FromRole="SpecialitesSecondaire" ToRole="EquipementSpecialite" />
+        </EntityType>
+        <EntityType Name="UnitesSpeciale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <NavigationProperty Name="Personnage" Relationship="SigmaCreationPerso.PersonnageUnitesSpeciale" FromRole="UnitesSpeciale" ToRole="Personnage" />
+          <NavigationProperty Name="UnitesSpecialesLangages" Relationship="SigmaCreationPerso.UnitesSpecialeUnitesSpecialesLangage" FromRole="UnitesSpeciale" ToRole="UnitesSpecialesLangage" />
+          <NavigationProperty Name="Armes" Relationship="SigmaCreationPerso.UnitesSpecialeArme" FromRole="UnitesSpeciale" ToRole="Arme" />
+        </EntityType>
+        <EntityType Name="UnitesSpecialesLangage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="UnitesSpeciale" Relationship="SigmaCreationPerso.UnitesSpecialeUnitesSpecialesLangage" FromRole="UnitesSpecialesLangage" ToRole="UnitesSpeciale" />
+          <NavigationProperty Name="Langage" Relationship="SigmaCreationPerso.LangageUnitesSpecialesLangage" FromRole="UnitesSpecialesLangage" ToRole="Langage" />
+        </EntityType>
+        <EntityType Name="Langage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="false" MaxLength="16" Unicode="true" />
+          <NavigationProperty Name="UnitesSpecialesLangages" Relationship="SigmaCreationPerso.LangageUnitesSpecialesLangage" FromRole="Langage" ToRole="UnitesSpecialesLangage" />
+        </EntityType>
+        <EntityType Name="ArmesEmportee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Personnage" Relationship="SigmaCreationPerso.PersonnageArmesEmportee" FromRole="ArmesEmportee" ToRole="Personnage" />
+          <NavigationProperty Name="Arme" Relationship="SigmaCreationPerso.ArmeArmesEmportee" FromRole="ArmesEmportee" ToRole="Arme" />
+        </EntityType>
+        <EntityType Name="Arme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="distanceCourte" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="distanceLongue" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="dommage" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="teteAtteinte" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ArmesEmportees" Relationship="SigmaCreationPerso.ArmeArmesEmportee" FromRole="Arme" ToRole="ArmesEmportee" />
+          <NavigationProperty Name="UnitesSpeciale" Relationship="SigmaCreationPerso.UnitesSpecialeArme" FromRole="Arme" ToRole="UnitesSpeciale" />
+          <NavigationProperty Name="ArmesMotsCles" Relationship="SigmaCreationPerso.ArmeArmesMotsCle" FromRole="Arme" ToRole="ArmesMotsCle" />
+          <NavigationProperty Name="ArmesType" Relationship="SigmaCreationPerso.ArmesTypeArme" FromRole="Arme" ToRole="ArmesType" />
+        </EntityType>
+        <EntityType Name="ArmesMotsCle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Arme" Relationship="SigmaCreationPerso.ArmeArmesMotsCle" FromRole="ArmesMotsCle" ToRole="Arme" />
+          <NavigationProperty Name="MotsCle" Relationship="SigmaCreationPerso.MotsCleArmesMotsCle" FromRole="ArmesMotsCle" ToRole="MotsCle" />
+        </EntityType>
+        <EntityType Name="MotsCle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="true" MaxLength="16" Unicode="true" />
+          <Property Name="effet" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ArmesMotsCles" Relationship="SigmaCreationPerso.MotsCleArmesMotsCle" FromRole="MotsCle" ToRole="ArmesMotsCle" />
+        </EntityType>
+        <EntityType Name="ArmesType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="true" MaxLength="16" Unicode="true" />
+          <NavigationProperty Name="Armes" Relationship="SigmaCreationPerso.ArmesTypeArme" FromRole="ArmesType" ToRole="Arme" />
+          <NavigationProperty Name="ClassesArmesTypes" Relationship="SigmaCreationPerso.ArmesTypeClassesArmesType" FromRole="ArmesType" ToRole="ClassesArmesType" />
+          </EntityType>
+        <EntityType Name="ClassesSoldat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="true" MaxLength="16" Unicode="true" />
+          <Property Name="bonus" Type="String" Nullable="false" FixedLength="true" MaxLength="128" Unicode="true" />
+          <NavigationProperty Name="Personnages" Relationship="SigmaCreationPerso.ClassesSoldatPersonnage" FromRole="ClassesSoldat" ToRole="Personnage" />
+          <NavigationProperty Name="ClassesArmesTypes" Relationship="SigmaCreationPerso.ClassesSoldatClassesArmesType" FromRole="ClassesSoldat" ToRole="ClassesArmesType" />
+        </EntityType>
+        <EntityType Name="ClassesArmesType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ClassesSoldat" Relationship="SigmaCreationPerso.ClassesSoldatClassesArmesType" FromRole="ClassesArmesType" ToRole="ClassesSoldat" />
+          <NavigationProperty Name="ArmesType" Relationship="SigmaCreationPerso.ArmesTypeClassesArmesType" FromRole="ClassesArmesType" ToRole="ArmesType" />
+        </EntityType>
+        <EntityType Name="SpecialitesPrimaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <NavigationProperty Name="Personnages" Relationship="SigmaCreationPerso.SpecialitesPrimairePersonnage" FromRole="SpecialitesPrimaire" ToRole="Personnage" />
+          <NavigationProperty Name="ManoeuvresTactique" Relationship="SigmaCreationPerso.ManoeuvresTactiqueSpecialitesPrimaire" FromRole="SpecialitesPrimaire" ToRole="ManoeuvresTactique" />
+          <NavigationProperty Name="SpecialitesPrimairesBonus" Relationship="SigmaCreationPerso.FK_SpecialitesPrimaireSpecialitesPrimairesBonus" FromRole="SpecialitesPrimaire" ToRole="SpecialitesPrimairesBonu" />
+        </EntityType>
+        <EntityType Name="ManoeuvresTactique">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="SpecialitesPrimaires" Relationship="SigmaCreationPerso.ManoeuvresTactiqueSpecialitesPrimaire" FromRole="ManoeuvresTactique" ToRole="SpecialitesPrimaire" />
+        </EntityType>
+        <EntityType Name="BonusAttribut">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bonusAttribut" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="valeur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SpecialitesPrimairesBonus" Relationship="SigmaCreationPerso.FK_BonusAttributSpecialitesPrimairesBonus" FromRole="BonusAttribut" ToRole="SpecialitesPrimairesBonu" />
+        </EntityType>
+        <Association Name="EquipementEmportePersonnage">
+          <End Type="SigmaCreationPerso.EquipementEmporte" Role="EquipementEmporte" Multiplicity="*" />
+          <End Type="SigmaCreationPerso.Personnage" Role="Personnage" Multiplicity="1" />
+        </Association>
+        <Association Name="SpecialitesSecondairePersonnage">
+          <End Type="SigmaCreationPerso.SpecialitesSecondaire" Role="SpecialitesSecondaire" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.Personnage" Role="Personnage" Multiplicity="*" />
+        </Association>
+        <Association Name="PersonnageUnitesSpeciale">
+          <End Type="SigmaCreationPerso.Personnage" Role="Personnage" Multiplicity="*" />
+          <End Type="SigmaCreationPerso.UnitesSpeciale" Role="UnitesSpeciale" Multiplicity="1" />
+        </Association>
+        <Association Name="UnitesSpecialeUnitesSpecialesLangage">
+          <End Type="SigmaCreationPerso.UnitesSpeciale" Role="UnitesSpeciale" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.UnitesSpecialesLangage" Role="UnitesSpecialesLangage" Multiplicity="*" />
+        </Association>
+        <Association Name="LangageUnitesSpecialesLangage">
+          <End Type="SigmaCreationPerso.Langage" Role="Langage" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.UnitesSpecialesLangage" Role="UnitesSpecialesLangage" Multiplicity="*" />
+        </Association>
+        <Association Name="PersonnageArmesEmportee">
+          <End Type="SigmaCreationPerso.Personnage" Role="Personnage" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.ArmesEmportee" Role="ArmesEmportee" Multiplicity="*" />
+        </Association>
+        <Association Name="ArmeArmesEmportee">
+          <End Type="SigmaCreationPerso.Arme" Role="Arme" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.ArmesEmportee" Role="ArmesEmportee" Multiplicity="*" />
+        </Association>
+        <Association Name="UnitesSpecialeArme">
+          <End Type="SigmaCreationPerso.UnitesSpeciale" Role="UnitesSpeciale" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.Arme" Role="Arme" Multiplicity="*" />
+        </Association>
+        <Association Name="ArmeArmesMotsCle">
+          <End Type="SigmaCreationPerso.Arme" Role="Arme" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.ArmesMotsCle" Role="ArmesMotsCle" Multiplicity="*" />
+        </Association>
+        <Association Name="ArmesTypeArme">
+          <End Type="SigmaCreationPerso.ArmesType" Role="ArmesType" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.Arme" Role="Arme" Multiplicity="*" />
+        </Association>
+        <Association Name="MotsCleArmesMotsCle">
+          <End Type="SigmaCreationPerso.MotsCle" Role="MotsCle" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.ArmesMotsCle" Role="ArmesMotsCle" Multiplicity="*" />
+        </Association>
+        <Association Name="ClassesSoldatPersonnage">
+          <End Type="SigmaCreationPerso.ClassesSoldat" Role="ClassesSoldat" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.Personnage" Role="Personnage" Multiplicity="*" />
+        </Association>
+        <Association Name="ClassesSoldatClassesArmesType">
+          <End Type="SigmaCreationPerso.ClassesSoldat" Role="ClassesSoldat" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.ClassesArmesType" Role="ClassesArmesType" Multiplicity="*" />
+        </Association>
+        <Association Name="ArmesTypeClassesArmesType">
+          <End Type="SigmaCreationPerso.ArmesType" Role="ArmesType" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.ClassesArmesType" Role="ClassesArmesType" Multiplicity="*" />
+        </Association>
+        <Association Name="SpecialitesPrimairePersonnage">
+          <End Type="SigmaCreationPerso.SpecialitesPrimaire" Role="SpecialitesPrimaire" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.Personnage" Role="Personnage" Multiplicity="*" />
+        </Association>
+        <Association Name="ManoeuvresTactiqueSpecialitesPrimaire">
+          <End Type="SigmaCreationPerso.ManoeuvresTactique" Role="ManoeuvresTactique" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.SpecialitesPrimaire" Role="SpecialitesPrimaire" Multiplicity="*" />
+        </Association>
+        <Association Name="JoueurPersonnage">
+          <End Type="SigmaCreationPerso.Joueur" Role="Joueur" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.Personnage" Role="Personnage" Multiplicity="*" />
+        </Association>
+        <Association Name="AttributPersonnage">
+          <End Type="SigmaCreationPerso.Attribut" Role="Attribut" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.Personnage" Role="Personnage" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Equipement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="true" />
+          <Property Name="nonEntraine" Type="String" Nullable="false" MaxLength="128" FixedLength="true" Unicode="true" />
+          <Property Name="entraine" Type="String" Nullable="false" MaxLength="128" FixedLength="true" Unicode="true" />
+          <Property Name="Armures_Id" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="EquipementEmportes" Relationship="SigmaCreationPerso.FK_EquipementEmporteEquipement" FromRole="Equipement" ToRole="EquipementEmporte" />
+          <NavigationProperty Name="EquipementSpecialites" Relationship="SigmaCreationPerso.FK_EquipementSpecialiteEquipement" FromRole="Equipement" ToRole="EquipementSpecialite" />
+          <NavigationProperty Name="Armures" Relationship="SigmaCreationPerso.FK_Armures_Equipementse" FromRole="Equipement" ToRole="Armure" />
+        </EntityType>
+        <EntityType Name="EquipementSpecialite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Equipement" Relationship="SigmaCreationPerso.FK_EquipementSpecialiteEquipement" FromRole="EquipementSpecialite" ToRole="Equipement" />
+          <NavigationProperty Name="SpecialitesSecondaire" Relationship="SigmaCreationPerso.FK_SpecialitesSecondaireEquipementSpecialite" FromRole="EquipementSpecialite" ToRole="SpecialitesSecondaire" />
+        </EntityType>
+        <Association Name="FK_EquipementEmporteEquipement">
+          <End Type="SigmaCreationPerso.Equipement" Role="Equipement" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.EquipementEmporte" Role="EquipementEmporte" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_EquipementSpecialiteEquipement">
+          <End Type="SigmaCreationPerso.Equipement" Role="Equipement" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.EquipementSpecialite" Role="EquipementSpecialite" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_SpecialitesSecondaireEquipementSpecialite">
+          <End Type="SigmaCreationPerso.SpecialitesSecondaire" Role="SpecialitesSecondaire" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.EquipementSpecialite" Role="EquipementSpecialite" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Armure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="modele" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="true" />
+          <Property Name="bonus" Type="Int32" Nullable="false" />
+          <Property Name="absortion" Type="Int32" Nullable="false" />
+          <Property Name="vitesse" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Equipement" Relationship="SigmaCreationPerso.FK_Armures_Equipementse" FromRole="Armure" ToRole="Equipement" />
+        </EntityType>
+        <Association Name="FK_Armures_Equipementse">
+          <End Type="SigmaCreationPerso.Equipement" Role="Equipement" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.Armure" Role="Armure" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SpecialitesPrimairesBonu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="BonusAttribut" Relationship="SigmaCreationPerso.FK_BonusAttributSpecialitesPrimairesBonus" FromRole="SpecialitesPrimairesBonu" ToRole="BonusAttribut" />
+          <NavigationProperty Name="SpecialitesPrimaire" Relationship="SigmaCreationPerso.FK_SpecialitesPrimaireSpecialitesPrimairesBonus" FromRole="SpecialitesPrimairesBonu" ToRole="SpecialitesPrimaire" />
+        </EntityType>
+        <Association Name="FK_BonusAttributSpecialitesPrimairesBonus">
+          <End Type="SigmaCreationPerso.BonusAttribut" Role="BonusAttribut" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.SpecialitesPrimairesBonu" Role="SpecialitesPrimairesBonu" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_SpecialitesPrimaireSpecialitesPrimairesBonus">
+          <End Type="SigmaCreationPerso.SpecialitesPrimaire" Role="SpecialitesPrimaire" Multiplicity="1" />
+          <End Type="SigmaCreationPerso.SpecialitesPrimairesBonu" Role="SpecialitesPrimairesBonu" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SigmaCreationPersoStoreContainer" CdmEntityContainer="SigmaCreationPersoContainer">
+    <EntitySetMapping Name="Joueurs">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.Joueur)">
+        <MappingFragment StoreEntitySet="Joueurs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personnages">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.Personnage)">
+        <MappingFragment StoreEntitySet="Personnages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="nomDeCode" ColumnName="nomDeCode" />
+          <ScalarProperty Name="niveau" ColumnName="niveau" />
+          <ScalarProperty Name="descriptionPhsique" ColumnName="descriptionPhsique" />
+          <ScalarProperty Name="biographie" ColumnName="biographie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attributs">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.Attribut)">
+        <MappingFragment StoreEntitySet="Attributs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="combat" ColumnName="combat" />
+          <ScalarProperty Name="tir" ColumnName="tir" />
+          <ScalarProperty Name="eveil" ColumnName="eveil" />
+          <ScalarProperty Name="furtivite" ColumnName="furtivite" />
+          <ScalarProperty Name="resistence" ColumnName="resistence" />
+          <ScalarProperty Name="leadership" ColumnName="leadership" />
+          <ScalarProperty Name="formePhysique" ColumnName="formePhysique" />
+          <ScalarProperty Name="capaciteTechnique" ColumnName="capaciteTechnique" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipementEmportes">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.EquipementEmporte)">
+        <MappingFragment StoreEntitySet="EquipementEmportes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="entraine" ColumnName="entraine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialitesSecondaires">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.SpecialitesSecondaire)">
+        <MappingFragment StoreEntitySet="SpecialitesSecondaires">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitesSpeciales">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.UnitesSpeciale)">
+        <MappingFragment StoreEntitySet="UnitesSpeciales">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitesSpecialesLangages">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.UnitesSpecialesLangage)">
+        <MappingFragment StoreEntitySet="UnitesSpecialesLangages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Langages">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.Langage)">
+        <MappingFragment StoreEntitySet="Langages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArmesEmportees">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.ArmesEmportee)">
+        <MappingFragment StoreEntitySet="ArmesEmportees">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Armes">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.Arme)">
+        <MappingFragment StoreEntitySet="Armes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="distanceCourte" ColumnName="distanceCourte" />
+          <ScalarProperty Name="distanceLongue" ColumnName="distanceLongue" />
+          <ScalarProperty Name="dommage" ColumnName="dommage" />
+          <ScalarProperty Name="teteAtteinte" ColumnName="teteAtteinte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArmesMotsCles">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.ArmesMotsCle)">
+        <MappingFragment StoreEntitySet="ArmesMotsCles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotsCles">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.MotsCle)">
+        <MappingFragment StoreEntitySet="MotsCles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="effet" ColumnName="effet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArmesTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.ArmesType)">
+        <MappingFragment StoreEntitySet="ArmesTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassesSoldats">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.ClassesSoldat)">
+        <MappingFragment StoreEntitySet="ClassesSoldats">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="bonus" ColumnName="bonus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassesArmesTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.ClassesArmesType)">
+        <MappingFragment StoreEntitySet="ClassesArmesTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialitesPrimaires">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.SpecialitesPrimaire)">
+        <MappingFragment StoreEntitySet="SpecialitesPrimaires">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManoeuvresTactiques">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.ManoeuvresTactique)">
+        <MappingFragment StoreEntitySet="ManoeuvresTactiques">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BonusAttributs">
+      <EntityTypeMapping TypeName="IsTypeOf(SigmaCreationPerso.BonusAttribut)">
+        <MappingFragment StoreEntitySet="BonusAttributs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="bonusAttribut" ColumnName="bonusAttribut" />
+          <ScalarProperty Name="valeur" ColumnName="valeur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EquipementEmportePersonnage" TypeName="SigmaCreationPerso.EquipementEmportePersonnage" StoreEntitySet="EquipementEmportes">
+      <EndProperty Name="Personnage">
+        <ScalarProperty Name="Id" ColumnName="Personnage_Id" />
+      </EndProperty>
+      <EndProperty Name="EquipementEmporte">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SpecialitesSecondairePersonnage" TypeName="SigmaCreationPerso.SpecialitesSecondairePersonnage" StoreEntitySet="Personnages">
+      <EndProperty Name="SpecialitesSecondaire">
+        <ScalarProperty Name="Id" ColumnName="SpecialitesSecondaire_Id" />
+      </EndProperty>
+      <EndProperty Name="Personnage">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonnageUnitesSpeciale" TypeName="SigmaCreationPerso.PersonnageUnitesSpeciale" StoreEntitySet="Personnages">
+      <EndProperty Name="UnitesSpeciale">
+        <ScalarProperty Name="Id" ColumnName="UnitesSpeciales_Id" />
+      </EndProperty>
+      <EndProperty Name="Personnage">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UnitesSpecialeUnitesSpecialesLangage" TypeName="SigmaCreationPerso.UnitesSpecialeUnitesSpecialesLangage" StoreEntitySet="UnitesSpecialesLangages">
+      <EndProperty Name="UnitesSpeciale">
+        <ScalarProperty Name="Id" ColumnName="UnitesSpeciale_Id" />
+      </EndProperty>
+      <EndProperty Name="UnitesSpecialesLangage">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LangageUnitesSpecialesLangage" TypeName="SigmaCreationPerso.LangageUnitesSpecialesLangage" StoreEntitySet="UnitesSpecialesLangages">
+      <EndProperty Name="Langage">
+        <ScalarProperty Name="Id" ColumnName="Langage_Id" />
+      </EndProperty>
+      <EndProperty Name="UnitesSpecialesLangage">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonnageArmesEmportee" TypeName="SigmaCreationPerso.PersonnageArmesEmportee" StoreEntitySet="ArmesEmportees">
+      <EndProperty Name="Personnage">
+        <ScalarProperty Name="Id" ColumnName="Personnage_Id" />
+      </EndProperty>
+      <EndProperty Name="ArmesEmportee">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArmeArmesEmportee" TypeName="SigmaCreationPerso.ArmeArmesEmportee" StoreEntitySet="ArmesEmportees">
+      <EndProperty Name="Arme">
+        <ScalarProperty Name="Id" ColumnName="Arme_Id" />
+      </EndProperty>
+      <EndProperty Name="ArmesEmportee">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UnitesSpecialeArme" TypeName="SigmaCreationPerso.UnitesSpecialeArme" StoreEntitySet="Armes">
+      <EndProperty Name="UnitesSpeciale">
+        <ScalarProperty Name="Id" ColumnName="UnitesSpeciale_Id" />
+      </EndProperty>
+      <EndProperty Name="Arme">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArmeArmesMotsCle" TypeName="SigmaCreationPerso.ArmeArmesMotsCle" StoreEntitySet="ArmesMotsCles">
+      <EndProperty Name="Arme">
+        <ScalarProperty Name="Id" ColumnName="Arme_Id" />
+      </EndProperty>
+      <EndProperty Name="ArmesMotsCle">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArmesTypeArme" TypeName="SigmaCreationPerso.ArmesTypeArme" StoreEntitySet="Armes">
+      <EndProperty Name="ArmesType">
+        <ScalarProperty Name="Id" ColumnName="ArmesType_Id" />
+      </EndProperty>
+      <EndProperty Name="Arme">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MotsCleArmesMotsCle" TypeName="SigmaCreationPerso.MotsCleArmesMotsCle" StoreEntitySet="ArmesMotsCles">
+      <EndProperty Name="MotsCle">
+        <ScalarProperty Name="Id" ColumnName="MotsCle_Id" />
+      </EndProperty>
+      <EndProperty Name="ArmesMotsCle">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClassesSoldatPersonnage" TypeName="SigmaCreationPerso.ClassesSoldatPersonnage" StoreEntitySet="Personnages">
+      <EndProperty Name="ClassesSoldat">
+        <ScalarProperty Name="Id" ColumnName="ClassesSoldat_Id" />
+      </EndProperty>
+      <EndProperty Name="Personnage">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClassesSoldatClassesArmesType" TypeName="SigmaCreationPerso.ClassesSoldatClassesArmesType" StoreEntitySet="ClassesArmesTypes">
+      <EndProperty Name="ClassesSoldat">
+        <ScalarProperty Name="Id" ColumnName="ClassesSoldat_Id" />
+      </EndProperty>
+      <EndProperty Name="ClassesArmesType">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArmesTypeClassesArmesType" TypeName="SigmaCreationPerso.ArmesTypeClassesArmesType" StoreEntitySet="ClassesArmesTypes">
+      <EndProperty Name="ArmesType">
+        <ScalarProperty Name="Id" ColumnName="ArmesType_Id" />
+      </EndProperty>
+      <EndProperty Name="ClassesArmesType">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SpecialitesPrimairePersonnage" TypeName="SigmaCreationPerso.SpecialitesPrimairePersonnage" StoreEntitySet="Personnages">
+      <EndProperty Name="SpecialitesPrimaire">
+        <ScalarProperty Name="Id" ColumnName="SpecialitesPrimaire_Id" />
+      </EndProperty>
+      <EndProperty Name="Personnage">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ManoeuvresTactiqueSpecialitesPrimaire" TypeName="SigmaCreationPerso.ManoeuvresTactiqueSpecialitesPrimaire" StoreEntitySet="SpecialitesPrimaires">
+      <EndProperty Name="ManoeuvresTactique">
+        <ScalarProperty Name="Id" ColumnName="ManoeuvresTactique_Id" />
+      </EndProperty>
+      <EndProperty Name="SpecialitesPrimaire">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="JoueurPersonnage" TypeName="SigmaCreationPerso.JoueurPersonnage" StoreEntitySet="Personnages">
+      <EndProperty Name="Joueur">
+        <ScalarProperty Name="Id" ColumnName="Joueur_Id" />
+      </EndProperty>
+      <EndProperty Name="Personnage">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AttributPersonnage" TypeName="SigmaCreationPerso.AttributPersonnage" StoreEntitySet="Personnages">
+      <EndProperty Name="Attribut">
+        <ScalarProperty Name="Id" ColumnName="Attribut_Id" />
+      </EndProperty>
+      <EndProperty Name="Personnage">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+          <EntitySetMapping Name="Equipements">
+            <EntityTypeMapping TypeName="SigmaCreationPerso.Equipement">
+              <MappingFragment StoreEntitySet="Equipements">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Armures_Id" ColumnName="Armures_Id" />
+                <ScalarProperty Name="entraine" ColumnName="entraine" />
+                <ScalarProperty Name="nonEntraine" ColumnName="nonEntraine" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipementSpecialites">
+            <EntityTypeMapping TypeName="SigmaCreationPerso.EquipementSpecialite">
+              <MappingFragment StoreEntitySet="EquipementSpecialites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_EquipementEmporteEquipement" TypeName="SigmaCreationPerso.FK_EquipementEmporteEquipement" StoreEntitySet="EquipementEmportes">
+            <EndProperty Name="EquipementEmporte">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Equipement">
+              <ScalarProperty Name="Id" ColumnName="Equipement_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_EquipementSpecialiteEquipement" TypeName="SigmaCreationPerso.FK_EquipementSpecialiteEquipement" StoreEntitySet="EquipementSpecialites">
+            <EndProperty Name="EquipementSpecialite">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Equipement">
+              <ScalarProperty Name="Id" ColumnName="Equipements_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SpecialitesSecondaireEquipementSpecialite" TypeName="SigmaCreationPerso.FK_SpecialitesSecondaireEquipementSpecialite" StoreEntitySet="EquipementSpecialites">
+            <EndProperty Name="EquipementSpecialite">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="SpecialitesSecondaire">
+              <ScalarProperty Name="Id" ColumnName="SpecialitesSecondaire_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Armures">
+            <EntityTypeMapping TypeName="SigmaCreationPerso.Armure">
+              <MappingFragment StoreEntitySet="Armures">
+                <ScalarProperty Name="vitesse" ColumnName="vitesse" />
+                <ScalarProperty Name="absortion" ColumnName="absortion" />
+                <ScalarProperty Name="bonus" ColumnName="bonus" />
+                <ScalarProperty Name="modele" ColumnName="modele" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Armures_Equipementse" TypeName="SigmaCreationPerso.FK_Armures_Equipementse" StoreEntitySet="Armures">
+            <EndProperty Name="Armure">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Equipement">
+              <ScalarProperty Name="Id" ColumnName="EquipementsID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="SpecialitesPrimairesBonus">
+            <EntityTypeMapping TypeName="SigmaCreationPerso.SpecialitesPrimairesBonu">
+              <MappingFragment StoreEntitySet="SpecialitesPrimairesBonus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_BonusAttributSpecialitesPrimairesBonus" TypeName="SigmaCreationPerso.FK_BonusAttributSpecialitesPrimairesBonus" StoreEntitySet="SpecialitesPrimairesBonus">
+            <EndProperty Name="SpecialitesPrimairesBonu">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="BonusAttribut">
+              <ScalarProperty Name="Id" ColumnName="BonusAttribut_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SpecialitesPrimaireSpecialitesPrimairesBonus" TypeName="SigmaCreationPerso.FK_SpecialitesPrimaireSpecialitesPrimairesBonus" StoreEntitySet="SpecialitesPrimairesBonus">
+            <EndProperty Name="SpecialitesPrimairesBonu">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="SpecialitesPrimaire">
+              <ScalarProperty Name="Id" ColumnName="SpecialitesPrimaire_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
