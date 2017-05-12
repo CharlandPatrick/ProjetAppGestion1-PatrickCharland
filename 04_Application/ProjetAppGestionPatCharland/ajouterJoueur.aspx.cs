@@ -9,10 +9,7 @@ public partial class ajouterJoueur : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Page.IsPostBack)
-        {
-            SigmaCreationPersoContainer ctx = new SigmaCreationPersoContainer();
-        }
+
     }
 
     protected void buttonAjouter_Click(object sender, EventArgs e)
@@ -22,8 +19,23 @@ public partial class ajouterJoueur : System.Web.UI.Page
 
         nouveauJoueur.prenom = TextBoxNouveauJoueur.Text;
 
-        ctx.Joueurs.Add(nouveauJoueur);
-        ctx.SaveChanges();
-        Response.Redirect("index.aspx");
+        try
+        {
+            if (nouveauJoueur.prenom != "" && nouveauJoueur.prenom != " " && nouveauJoueur.prenom != null)
+            {
+                ctx.Joueurs.Add(nouveauJoueur);
+                ctx.SaveChanges();
+                Response.Redirect("index.aspx");
+            }
+            else
+            {
+                ModelState.AddModelError("", String.Format("La modification ne peut être vide"));
+            }
+                
+        }
+        catch (Exception)
+        {
+            ModelState.AddModelError("", String.Format("Une erreur est survenue, contactez votre administrateur système"));
+        }
     }
 }

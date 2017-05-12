@@ -8,13 +8,12 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="formAjouterJoueur" runat="server">
     <div>  
         <h1>Ajouter joueur</h1>
     </div>
         <h2>Entrez le prénom du nouveau joueur:<asp:TextBox ID="TextBoxNouveauJoueur" runat="server" Width="280px" style="margin-left: 20px" Height="20px"></asp:TextBox></h2>
     <div>
-    
         <asp:Button ID="buttonAjouter" runat="server" OnClick="buttonAjouter_Click" style="margin-left: 400px" Text="Ajouter" Width="287px" />
     </div>
     </form>
